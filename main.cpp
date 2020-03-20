@@ -5,17 +5,17 @@
 */
 
 // gcc include
-#include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <chrono>
+#include <stdio.h>
+#include <unistd.h>
 // project include
 #include "avl.h"
 
 void parse(avl_tree* tree, char* path) 
 {
-	std::cout << "Consuming " << path << std::endl; 
-
 	std::ifstream file (path);
 	std::string line;
 	while (getline(file, line)) 
@@ -42,10 +42,17 @@ int main (int argc, char** argv)
 
 	// create a new tree and parse from the given input file, then perform a preorder traversal
 	avl_tree* tree = new avl_tree();
+
+	// parse tree and insert all elements from input file
+	auto i_start = std::chrono::steady_clock::now();
 	parse(tree, argv[1]);
-	//tree->preorder(tree->getRoot());
-	//std::cout << std::endl;
-	
+	auto i_end = std::chrono::steady_clock::now();
+	std::cout << "Insertion: " << std::chrono::duration_cast<std::chrono::nanoseconds>(i_end - i_start).count() << "ns" << std::endl;
+
+	// find any leaf node to consider worst-case search time
+	auto f_start = std::chrono::steady_clock::now();
 	avl* leaf = tree->findAnyLeaf(tree->getRoot());
-	//std::cout << leaf->d << std::endl;
+	auto f_end = std::chrono::steady_clock::now();
+	std::cout << "Find: " << std::chrono::duration_cast<std::chrono::nanoseconds>(f_end - f_start).count() << "ns" << std::endl;
+	std::cout << std::endl;
 } 
