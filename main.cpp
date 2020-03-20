@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <chrono>
 #include <stdio.h>
 #include <unistd.h>
@@ -36,12 +37,14 @@ void parse(avl_tree* tree, char* path)
 
 int main (int argc, char** argv) 
 {
-	if (argc < 2) {
-		std::cout << "Please run this program with two arguments\nExample usage: ./avl <inputPath>\n";
+	if (argc < 3) {
+		std::cout << "Please run this program with two arguments\nExample usage: ./avl <inputPath> <balancefactor>\n";
 	}
-
+	int balFac = 1;
+	balFac = std::stoi(argv[2]);
+	std::cout << "balance factor is " << balFac << std::endl;
 	// create a new tree and parse from the given input file, then perform a preorder traversal
-	avl_tree* tree = new avl_tree();
+	avl_tree* tree = new avl_tree(balFac);
 
 	// parse tree and insert all elements from input file
 	auto i_start = std::chrono::steady_clock::now();

@@ -53,7 +53,7 @@ int avl_tree::difference(avl* t) {
 avl *avl_tree::balance(avl* t) 
 {
 	int bal_factor = difference(t);
-	if (bal_factor > H) 
+	if (bal_factor > balanceFactor) 
 	{
 		if (difference(t->l) > 0)
 			t = ll_rotate(t);

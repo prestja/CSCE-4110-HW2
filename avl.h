@@ -13,7 +13,6 @@
 #pragma once 
 
 #define pow2(n) (1 << (n))
-#define H 1
 
 /*
 	Implementation derived from https://www.tutorialspoint.com/cplusplus-program-to-implement-avl-tree
@@ -30,6 +29,7 @@ class avl_tree
 {
 	private:
 		avl* root;
+		int balanceFactor;
 	public:
 		// properties
 		int height(avl*);
@@ -54,7 +54,8 @@ class avl_tree
 		void postorder(avl*);
 		avl* findAnyLeaf(avl*);
 		
-		avl_tree() {
+		avl_tree(int balFact) {
 			root = NULL;
+			balanceFactor = balFact;
 		}
 };
