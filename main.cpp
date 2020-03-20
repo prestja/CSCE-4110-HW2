@@ -23,7 +23,7 @@ void parse(avl_tree* tree, char* path)
 		std::stringstream ss (line);
 		int next;
 		ss >> next;
-		std::cout << "Inserting " << next << std::endl;
+		//std::cout << "Inserting " << next << std::endl;
 		avl* root = tree->getRoot();
 		avl* inserted = tree->insert(root, next);
 
@@ -43,9 +43,9 @@ int main (int argc, char** argv)
 	// create a new tree and parse from the given input file, then perform a preorder traversal
 	avl_tree* tree = new avl_tree();
 	parse(tree, argv[1]);
-	tree->preorder(tree->getRoot());
-	std::cout << std::endl;
+	//tree->preorder(tree->getRoot());
+	//std::cout << std::endl;
 	
 	avl* leaf = tree->findAnyLeaf(tree->getRoot());
-	std::cout << leaf->d << std::endl;
+	//std::cout << leaf->d << std::endl;
 } 

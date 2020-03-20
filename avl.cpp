@@ -99,7 +99,7 @@ avl* avl_tree::rr_rotate(avl* parent)
 	t = parent->r;
 	parent->r = t->l;
 	t->l = parent;
-	std::cout<<"Right-Right Rotation\n";
+	//std::cout<<"Right-Right Rotation\n";
 	return t;
 }
 
@@ -109,7 +109,7 @@ avl* avl_tree::ll_rotate(avl* parent)
 	t = parent->l;
 	parent->l = t->r;
 	t->r = parent;
-	std::cout<<"Left-Left Rotation\n";
+	//std::cout<<"Left-Left Rotation\n";
 	return t;
 }
 
@@ -118,7 +118,7 @@ avl* avl_tree::lr_rotate(avl* parent)
 	avl *t;
 	t = parent->l;
 	parent->l = rr_rotate(t);
-	std::cout<<"Left-Right Rotation\n";
+	//std::cout<<"Left-Right Rotation\n";
 	return ll_rotate(parent);
 }
 
@@ -127,7 +127,7 @@ avl* avl_tree::rl_rotate(avl* parent)
 	avl *t;
 	t = parent->r;
 	parent->r = ll_rotate(t);
-	std::cout<<"Right-Left Rotation\n";
+	//std::cout<<"Right-Left Rotation\n";
 	return rr_rotate(parent);
 }
 
