@@ -33,7 +33,8 @@ class avl_tree
 		int height(avl*);
 		int difference(avl*);
 		avl* getRoot();
-		
+		avl* setRoot(avl*);
+
 		// rotations
 		avl* rr_rotate(avl*);
 		avl* ll_rotate(avl*);

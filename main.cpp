@@ -23,7 +23,15 @@ void parse(avl_tree* tree, char* path)
 		std::stringstream ss (line);
 		int next;
 		ss >> next;
-		std::cout << next << "\n";
+		std::cout << "Inserting " << next << std::endl;
+		avl* root = tree->getRoot();
+		avl* inserted = tree->insert(root, next);
+
+		root = tree->getRoot();
+		if (root == NULL) {
+			std::cout << ", root is null, setting!\n";
+			tree->setRoot(inserted);
+		}
 	}
 }
 
@@ -34,4 +42,5 @@ int main (int argc, char** argv)
 	}
 	avl_tree* avl = new avl_tree();
 	parse(avl, argv[1]);
+	avl->preorder(avl->getRoot());
 } 
