@@ -31,3 +31,22 @@ avl* avl_tree::insert(avl *r, int v)
 	} 
 	return r;
 }
+
+avl *avl_tree::balance(avl *t) {
+	int bal_factor = difference(t);
+	if (bal_factor > 1) 
+	{
+		if (difference(t->l) > 0)
+			t = ll_rotate(t);
+		else
+			t = lr_rotate(t);
+	} 
+	else if (bal_factor < -1) 
+	{
+		if (difference(t->r) > 0)
+			t = rl_rotate(t);
+		else
+			t = rr_rotate(t);
+	}
+	return t;
+}
