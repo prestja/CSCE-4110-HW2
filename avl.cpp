@@ -9,6 +9,13 @@ avl* avl_tree::getRoot()
 	return root;
 }
 
+int avl_tree::difference(avl* t) {
+	int l_height = height(t->l);
+	int r_height = height(t->r);
+	int b_factor = l_height - r_height;
+	return b_factor;
+}
+
 avl* avl_tree::insert(avl *r, int v) 
 {
 	if (r == NULL) 
@@ -39,7 +46,7 @@ int avl_tree::height(avl *t)
 	{
 		int l_height = height(t->l);
 		int r_height = height(t->r);
-		int max_height = max(l_height, r_height);
+		int max_height = std::max(l_height, r_height);
 		h = max_height + 1;
 	}
 	return h;

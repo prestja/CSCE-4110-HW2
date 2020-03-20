@@ -25,8 +25,8 @@ class avl_tree
 		avl* root;
 	public:
 		// properties
-		int height();
-		int difference();
+		int height(avl*);
+		int difference(avl*);
 		avl* getRoot();
 		
 		// rotations
