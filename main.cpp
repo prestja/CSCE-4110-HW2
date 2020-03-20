@@ -41,8 +41,11 @@ int main (int argc, char** argv)
 	}
 
 	// create a new tree and parse from the given input file, then perform a preorder traversal
-	avl_tree* avl = new avl_tree();
-	parse(avl, argv[1]);
-	avl->preorder(avl->getRoot());
+	avl_tree* tree = new avl_tree();
+	parse(tree, argv[1]);
+	tree->preorder(tree->getRoot());
 	std::cout << std::endl;
+	
+	avl* leaf = tree->findAnyLeaf(tree->getRoot());
+	std::cout << leaf->d << std::endl;
 } 

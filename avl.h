@@ -51,6 +51,7 @@ class avl_tree
 		void inorder(avl*);
 		void preorder(avl*);
 		void postorder(avl*);
+		avl* findAnyLeaf(avl*);
 		
 		avl_tree() {
 			root = NULL;

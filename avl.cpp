@@ -93,7 +93,8 @@ avl* avl_tree::insert(avl* t, int v)
 	return t;
 }
 
-avl* avl_tree::rr_rotate(avl* parent) {
+avl* avl_tree::rr_rotate(avl* parent) 
+{
 	avl *t;
 	t = parent->r;
 	parent->r = t->l;
@@ -102,7 +103,8 @@ avl* avl_tree::rr_rotate(avl* parent) {
 	return t;
 }
 
-avl* avl_tree::ll_rotate(avl* parent) {
+avl* avl_tree::ll_rotate(avl* parent) 
+{
 	avl *t;
 	t = parent->l;
 	parent->l = t->r;
@@ -111,7 +113,8 @@ avl* avl_tree::ll_rotate(avl* parent) {
 	return t;
 }
 
-avl* avl_tree::lr_rotate(avl* parent) {
+avl* avl_tree::lr_rotate(avl* parent) 
+{
 	avl *t;
 	t = parent->l;
 	parent->l = rr_rotate(t);
@@ -119,10 +122,23 @@ avl* avl_tree::lr_rotate(avl* parent) {
 	return ll_rotate(parent);
 }
 
-avl* avl_tree::rl_rotate(avl* parent) {
+avl* avl_tree::rl_rotate(avl* parent) 
+{
 	avl *t;
 	t = parent->r;
 	parent->r = ll_rotate(t);
 	std::cout<<"Right-Left Rotation\n";
 	return rr_rotate(parent);
+}
+
+avl* avl_tree::findAnyLeaf(avl* t)
+{	
+	// returns the in-order traversal finding the furthest-down leaf node
+	if (t->l != NULL) {
+		return findAnyLeaf(t->l);
+	}
+	if (t->r != NULL) {
+		return findAnyLeaf(t->r);
+	}
+	return t;
 }
