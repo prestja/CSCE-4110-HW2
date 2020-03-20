@@ -24,18 +24,27 @@ class avl_tree
 	private:
 		avl* r;
 	public:
+		// properties
 		int height();
 		int difference();
+		avl* getRoot();
+		
+		// rotations
 		avl* rr_rotate(avl*);
 		avl* ll_rotate(avl*);
 		avl* lr_rotate(avl*);
 		avl* rl_rotate(avl*);
+		
+		// primary operations
 		avl* balance(avl*);
 		avl* insert(avl*, int);
+		
+		// other operations
 		void print(avl*, int);
 		void inorder(avl*);
 		void preorder(avl*);
 		void postorder(avl*);
+		
 		avl_tree() {
 			r = NULL;
 		}

@@ -25,7 +25,7 @@ void parse(avl_tree* tree, char* path)
 		ss >> next;
 		std::cout << next << "\n";
 	}
-} 
+}
 
 int main (int argc, char** argv) 
 {
