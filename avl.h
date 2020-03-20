@@ -22,7 +22,7 @@ typedef struct _avl
 class avl_tree 
 {
 	private:
-		avl* r;
+		avl* root;
 	public:
 		// properties
 		int height();
@@ -46,6 +46,6 @@ class avl_tree
 		void postorder(avl*);
 		
 		avl_tree() {
-			r = NULL;
+			root = NULL;
 		}
 };

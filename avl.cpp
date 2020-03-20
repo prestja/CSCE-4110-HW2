@@ -6,10 +6,9 @@
 
 avl* avl_tree::getRoot() 
 {
-	return r;
+	return root;
 }
 
-/*
 avl* avl_tree::insert(avl *r, int v) 
 {
 	if (r == NULL) 
@@ -20,7 +19,7 @@ avl* avl_tree::insert(avl *r, int v)
 		r->r = NULL;
 		return r;
 	} 
-	else if (v< r->d) 
+	else if (v < r->d) 
 	{
 		r->l = insert(r->l, v);
 		r = balance(r);
@@ -32,4 +31,3 @@ avl* avl_tree::insert(avl *r, int v)
 	} 
 	return r;
 }
-*/
