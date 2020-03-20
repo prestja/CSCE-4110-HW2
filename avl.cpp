@@ -20,11 +20,54 @@ avl* avl_tree::setRoot(avl* which)
 	root = which;
 }
 
+void avl_tree::preorder(avl* t) {
+	if (t == NULL) 
+	{
+		return;
+	}
+	std::cout << t->d << " ";
+	preorder(t->l);
+	preorder(t->r);
+}
+
+int avl_tree::height(avl* t) 
+{
+	int h = 0;
+	if (t != NULL) 
+	{
+		int l_height = height(t->l);
+		int r_height = height(t->r);
+		int max_height = std::max(l_height, r_height);
+		h = max_height + 1;
+	}
+	return h;
+}
+
 int avl_tree::difference(avl* t) {
 	int l_height = height(t->l);
 	int r_height = height(t->r);
 	int b_factor = l_height - r_height;
 	return b_factor;
+}
+
+avl *avl_tree::balance(avl* t) 
+{
+	int bal_factor = difference(t);
+	if (bal_factor > 1) 
+	{
+		if (difference(t->l) > 0)
+			t = ll_rotate(t);
+		else
+			t = lr_rotate(t);
+	} 
+	else if (bal_factor < -1) 
+	{
+		if (difference(t->r) > 0)
+			t = rl_rotate(t);
+		else
+			t = rr_rotate(t);
+	}
+	return t;
 }
 
 avl* avl_tree::insert(avl* t, int v) 
@@ -50,40 +93,7 @@ avl* avl_tree::insert(avl* t, int v)
 	return t;
 }
 
-int avl_tree::height(avl* t) 
-{
-	int h = 0;
-	if (t != NULL) 
-	{
-		int l_height = height(t->l);
-		int r_height = height(t->r);
-		int max_height = std::max(l_height, r_height);
-		h = max_height + 1;
-	}
-	return h;
-}
-
-avl *avl_tree::balance(avl *t) 
-{
-	int bal_factor = difference(t);
-	if (bal_factor > 1) 
-	{
-		if (difference(t->l) > 0)
-			t = ll_rotate(t);
-		else
-			t = lr_rotate(t);
-	} 
-	else if (bal_factor < -1) 
-	{
-		if (difference(t->r) > 0)
-			t = rl_rotate(t);
-		else
-			t = rr_rotate(t);
-	}
-	return t;
-}
-
-avl *avl_tree::rr_rotate(avl *parent) {
+avl* avl_tree::rr_rotate(avl* parent) {
 	avl *t;
 	t = parent->r;
 	parent->r = t->l;
@@ -92,7 +102,7 @@ avl *avl_tree::rr_rotate(avl *parent) {
 	return t;
 }
 
-avl *avl_tree::ll_rotate(avl *parent) {
+avl* avl_tree::ll_rotate(avl* parent) {
 	avl *t;
 	t = parent->l;
 	parent->l = t->r;
@@ -101,7 +111,7 @@ avl *avl_tree::ll_rotate(avl *parent) {
 	return t;
 }
 
-avl *avl_tree::lr_rotate(avl *parent) {
+avl* avl_tree::lr_rotate(avl* parent) {
 	avl *t;
 	t = parent->l;
 	parent->l = rr_rotate(t);
@@ -109,36 +119,10 @@ avl *avl_tree::lr_rotate(avl *parent) {
 	return ll_rotate(parent);
 }
 
-avl *avl_tree::rl_rotate(avl *parent) {
+avl* avl_tree::rl_rotate(avl* parent) {
 	avl *t;
 	t = parent->r;
 	parent->r = ll_rotate(t);
 	std::cout<<"Right-Left Rotation\n";
 	return rr_rotate(parent);
 }
-
-void avl_tree::preorder(avl *t) {
-	if (t == NULL) 
-	{
-		return;
-	}
-	std::cout << t->d << " ";
-	preorder(t->l);
-	preorder(t->r);
-}
-/*
-void avl_tree::print(avl *p, int l) {
-	int i;
-	if (p != NULL) 
-	{
-		print(p->r, l+ 1);
-		std::cout<<" ";
-		if (p == getRoot())
-			std::cout << "Root -> ";
-		for (i = 0; i < l && p != getRoot(); i++)
-		std::cout << " ";
-		std::cout << p->d;
-		print(p->l, l + 1);
-	}
-}
-*/

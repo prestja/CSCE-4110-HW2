@@ -29,7 +29,6 @@ void parse(avl_tree* tree, char* path)
 
 		root = tree->getRoot();
 		if (root == NULL) {
-			std::cout << ", root is null, setting!\n";
 			tree->setRoot(inserted);
 		}
 	}
@@ -40,7 +39,10 @@ int main (int argc, char** argv)
 	if (argc < 2) {
 		std::cout << "Please run this program with two arguments\nExample usage: ./avl <inputPath>\n";
 	}
+
+	// create a new tree and parse from the given input file, then perform a preorder traversal
 	avl_tree* avl = new avl_tree();
 	parse(avl, argv[1]);
 	avl->preorder(avl->getRoot());
+	std::cout << std::endl;
 } 

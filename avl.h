@@ -1,3 +1,9 @@
+/*
+	CSCE 4110 Homework 2
+	Jacob Preston, Richard Butler, Justin Dupuis
+	Spring 2020
+*/
+
 // gcc include
 #include <iostream>
 #include <cstdio>
@@ -18,11 +24,6 @@ typedef struct _avl
    struct _avl *l;
    struct _avl *r;
 } avl;
-/*
-	CSCE 4110 Homework 2
-	Jacob Preston, Richard Butler, Justin Dupuis
-	Spring 2020
-*/
 
 class avl_tree 
 {
