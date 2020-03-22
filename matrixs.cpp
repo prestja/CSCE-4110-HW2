@@ -11,7 +11,7 @@ using namespace std;
 #include "matrixs.h"
 // strassen code is from https://martin-thoma.com/strassen-algorithm-in-python-java-cpp/
 int size1;
-void ikjalgorithm(vector< vector<int> > A, vector< vector<int> > B, vector< vector<int> > &C, int n) {
+void ikjalgorithm(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector<int> > &C, int n) {
     for (int i = 0; i < n; i++) {
         for (int k = 0; k < n; k++) {
             for (int j = 0; j < n; j++) {
