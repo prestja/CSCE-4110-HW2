@@ -1,0 +1,108 @@
+times for file 100.txt
+Normal runtime 10003
+Strassen runtime 30918
+Sparse runtime 21912
+
+
+times for file 100x20.txt
+Normal runtime 998
+Strassen runtime 997
+Sparse runtime 0
+
+
+times for file 100x20s80.txt
+Normal runtime 998
+Strassen runtime 1002
+Sparse runtime 0
+
+
+times for file 100x25.txt
+Normal runtime 998
+Strassen runtime 0
+Sparse runtime 996
+
+
+times for file 100x25s80.txt
+Normal runtime 1003
+Strassen runtime 992
+Sparse runtime 0
+
+
+times for file 100x50.txt
+Normal runtime 2993
+Strassen runtime 4007
+Sparse runtime 2024
+
+
+times for file 100x50s80.txt
+Normal runtime 1994
+Strassen runtime 4012
+Sparse runtime 2003
+
+
+times for file 100x80.txt
+Normal runtime 5982
+Strassen runtime 23906
+Sparse runtime 10998
+
+
+times for file 100x80s80.txt
+Normal runtime 5964
+Strassen runtime 23936
+Sparse runtime 4966
+
+
+times for file 20.txt
+Normal runtime 0
+Strassen runtime 0
+Sparse runtime 0
+
+
+times for file 20s10.txt
+Normal runtime 0
+Strassen runtime 997
+Sparse runtime 0
+
+
+times for file 20s50.txt
+Normal runtime 0
+Strassen runtime 997
+Sparse runtime 0
+
+
+times for file 20s80.txt
+Normal runtime 997
+Strassen runtime 0
+Sparse runtime 0
+
+
+times for file 30.txt
+Normal runtime 998
+Strassen runtime 0
+Sparse runtime 997
+
+
+times for file 500.txt
+Normal runtime 1053469
+Strassen runtime 1409894
+Sparse runtime 2340628
+
+
+times for file 500s10.txt
+Normal runtime 1061813
+Strassen runtime 1396485
+Sparse runtime 2230889
+
+
+times for file 500s50.txt
+Normal runtime 1030736
+Strassen runtime 1397592
+Sparse runtime 1201119
+
+
+times for file 500s80.txt
+Normal runtime 1049807
+Strassen runtime 1401267
+Sparse runtime 1214514
+
+
