@@ -44,7 +44,7 @@ void parse(avl_tree* tree, char* path)
 	// inserts all remaining elements
 	for (int i = 1; i < buffer.size(); i++) 
 	{
-		tree->insert(tree->getRoot(), buffer[i]);
+		root=tree->insert(root, buffer[i]);
 	}
 }
 
@@ -65,12 +65,12 @@ int main (int argc, char** argv)
 	//auto i_end = std::chrono::steady_clock::now();
 	//std::cout << "Insertion: " << std::chrono::duration_cast<std::chrono::milliseconds>(i_end - i_start).count() << "ms" << std::endl;
 	
-	/*
+	
 	// find any leaf node to consider worst-case search time
 	auto f_start = std::chrono::steady_clock::now();
 	avl* leaf = tree->findAnyLeaf(tree->getRoot());
 	auto f_end = std::chrono::steady_clock::now();
 	std::cout << "Find: " << std::chrono::duration_cast<std::chrono::milliseconds>(f_end - f_start).count() << "ms" << std::endl;
 	std::cout << std::endl;
-	*/
+	
 } 

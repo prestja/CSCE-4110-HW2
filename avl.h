@@ -21,6 +21,7 @@
 typedef struct _avl
 {
    int d;
+   int h;
    struct _avl *l;
    struct _avl *r;
 } avl;
