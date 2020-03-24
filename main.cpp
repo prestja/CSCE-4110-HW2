@@ -23,16 +23,12 @@ void parse(avl_tree* tree, char* path)
 {
 	std::ifstream file (path);
 	std::string line;
-	
 	int next;
 
-	auto start = std::chrono::steady_clock::now();
 	while (file >> next) 
 	{
 		buffer.push_back(next);
 	}
-	auto end = std::chrono::steady_clock::now();
-	std::cout << "Took " << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << " ns to parse file" << std::endl;
 
 	// inserts the first element so that root is never null
 	avl* root = new avl();
@@ -55,16 +51,14 @@ int main (int argc, char** argv)
 	}
 	int balFac = 1;
 	balFac = std::stoi(argv[2]);
-	// create a new tree and parse from the given input file, then perform a preorder traversal
+	// create a new tree
 	avl_tree* tree = new avl_tree(balFac);
 
 	// parse tree and insert all elements from input file
-	
-	//auto i_start = std::chrono::steady_clock::now();
+	auto i_start = std::chrono::steady_clock::now();
 	parse(tree, argv[1]);
-	//auto i_end = std::chrono::steady_clock::now();
-	//std::cout << "Insertion: " << std::chrono::duration_cast<std::chrono::milliseconds>(i_end - i_start).count() << "ms" << std::endl;
-	
+	auto i_end = std::chrono::steady_clock::now();
+	std::cout << "Insertion: " << std::chrono::duration_cast<std::chrono::milliseconds>(i_end - i_start).count() << "ms" << std::endl;
 	
 	// find any leaf node to consider worst-case search time
 	auto f_start = std::chrono::steady_clock::now();

@@ -12,14 +12,13 @@
 
 int max(int a, int b) 
 { 
-	if(a>b){
+	if(a>b) {
 		return a;
 	}
-	else{
+	else {
 		return b; 
 	}
-} 
-
+}
 
 avl* avl_tree::getRoot() 
 {
@@ -79,7 +78,6 @@ avl *avl_tree::balance(avl* t)
 
 avl* avl_tree::insert(avl* t, int v) 
 {	
-	//std::cout<<"insert for "<<v<<std::endl; 
 	if (t == NULL) 
 	{
 		t = new avl;
@@ -90,17 +88,13 @@ avl* avl_tree::insert(avl* t, int v)
 	else if (v < t->d) 
 	{
 		t->l = insert(t->l, v);
-		//t = balance(t);
 	} 
 	else if (v >= t->d) 
 	{
 		t->r = insert(t->r, v);
-		//t = balance(t);
 	} 
-	//std::cout<<"im here\n";
-	t->h= 1+max((height(t->l)),(height(t->r)));
-	//std::cout<<"im here2\n";
-	t= balance(t);
+	t->h = 1 + max((height(t->l)),(height(t->r)));
+	t = balance(t);
 	return t;
 }
 
@@ -112,7 +106,6 @@ avl* avl_tree::rr_rotate(avl* parent)
 	t->l = parent;
 	parent->h=max(height(parent->l),height(parent->r)) +1;
 	t->h=max(height(t->l),height(t->r)) +1;
-	//std::cout<<"Right-Right Rotation\n";
 	return t;
 }
 
@@ -124,7 +117,6 @@ avl* avl_tree::ll_rotate(avl* parent)
 	t->r = parent;
 	parent->h=max(height(parent->l),height(parent->r)) +1;
 	t->h=max(height(t->l),height(t->r)) +1;
-	//std::cout<<"Left-Left Rotation\n";
 	return t;
 }
 
@@ -135,7 +127,6 @@ avl* avl_tree::lr_rotate(avl* parent)
 	parent->l = rr_rotate(t);
 	parent->h=max(height(parent->l),height(parent->r)) +1;
 	t->h=max(height(t->l),height(t->r)) +1;
-	//std::cout<<"Left-Right Rotation\n";
 	return ll_rotate(parent);
 }
 
@@ -146,7 +137,6 @@ avl* avl_tree::rl_rotate(avl* parent)
 	parent->r = ll_rotate(t);
 	parent->h=max(height(parent->l),height(parent->r)) +1;
 	t->h=max(height(t->l),height(t->r)) +1;
-	//std::cout<<"Right-Left Rotation\n";
 	return rr_rotate(parent);
 }
 
