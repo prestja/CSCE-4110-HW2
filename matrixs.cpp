@@ -175,18 +175,21 @@ void matrixs::load(string AName, string BName){
 	fin.open(BName);
 	fin >> r;
 	fin >> c;
+	b=a;
 	for(int i=0;i<r;i++){
 		vector <int> temp1;
 		for(int j=0;j<c;j++){
 			fin >> x;
 			temp1.push_back(x);
 		}
-		b.push_back(temp1);	
+		result.push_back(temp1);	
 	}
 	fin.close();
 	
 	
 }
+//used for optimization
+
 //prints of the matrixs stored
 //used for testing
 void matrixs::prt(){
@@ -225,9 +228,8 @@ void matrixs::basicMulti(){
 			for(int k=0; k<size;k++){
 				sum+=a[i][k]*b[k][j];
 			}
-			temp.push_back(sum);
+			result[i][j]=sum;
 		}
-		result.push_back(temp);
 	}
 }
 //the first call of the strassen methoid
@@ -275,4 +277,50 @@ void matrixs::SparseMulti(){
 		
 	}
 	
+}
+
+void matrixs::loads(string AName, string BName){
+	ifstream fin;
+	fin.open(AName);
+	int x, c1,r1;
+	fin >> r1;
+	fin >> c1;
+	size=c1;
+	size1=c1;
+	int count=0;
+	for(int i=0;i<r1;i++){
+		vector <int> temp1;
+		for(int j=0;j<c1;j++){
+			fin >> x;
+			if(x==0){
+				count++;
+			}
+			temp1.push_back(x);
+		}
+		a.push_back(temp1);	
+	}
+	fin.close();
+	int r,c;
+	fin.open(BName);
+	fin >> r;
+	fin >> c;
+	b=a;
+	for(int i=0;i<r;i++){
+		vector <int> temp1;
+		for(int j=0;j<c;j++){
+			fin >> x;
+			temp1.push_back(x);
+		}
+		result.push_back(temp1);	
+	}
+	fin.close();
+	if(c>99){
+		StrassenMulti();
+	}
+	else if((count/(c*r)*100) > 49){
+		SparseMulti();
+	}
+	else{
+		basicMulti();
+	}
 }

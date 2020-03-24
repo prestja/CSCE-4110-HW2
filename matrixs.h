@@ -18,9 +18,11 @@ class matrixs{
 		int size;
 	public:
 		void load(string AName, string BName);
+		
 		void prt();
 		void basicMulti();
 		void StrassenMulti();
 		void SparseMulti();
+		void loads(string AName, string BName);
 
 };
