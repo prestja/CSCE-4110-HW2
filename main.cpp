@@ -46,7 +46,8 @@ void parse(avl_tree* tree, char* path)
 
 int main (int argc, char** argv) 
 {
-	if (argc < 3) {
+	if (argc < 3) 
+	{
 		std::cout << "Please run this program with two arguments\nExample usage: ./avl <inputPath> <balancefactor>\n";
 	}
 	int balFac = 1;
@@ -66,5 +67,4 @@ int main (int argc, char** argv)
 	auto f_end = std::chrono::steady_clock::now();
 	std::cout << "Find: " << std::chrono::duration_cast<std::chrono::milliseconds>(f_end - f_start).count() << "ms" << std::endl;
 	std::cout << std::endl;
-	
 } 

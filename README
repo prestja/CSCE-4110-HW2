@@ -1,0 +1,13 @@
+To edit the parameters involved in AVL and R/B trees (including number of elements and balance factor),
+edit the two parameters N and BALANCE_FACTOR in Makefile
+
+To run experiments regarding AVL trees, type
+	make avl
+	make avl_sorted
+
+To run experiments regarding Red/Black trees, type
+	make rb
+	make rb_sorted
+
+To run experiments regarding matrix multiplication, type
+	make matrix
