@@ -1,6 +1,9 @@
 Run number 0
-runtime 	14014902
+runtime 	13965462
 
 Run number 1
-runtime 	11023981
+runtime 	10776042
+
+Run number 2
+runtime 	33637225
 

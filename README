@@ -11,3 +11,7 @@ To run experiments regarding Red/Black trees, type
 
 To run experiments regarding matrix multiplication, type
 	make matrix
+For the matrix experiments
+	run 1: runs each experments using basic matrix multiplication
+	run 2: choose the best algrithem for each experment
+	run 3: does each experment using each algrithem, and stores the result in a text file name timesForEach

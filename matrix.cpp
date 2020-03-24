@@ -18,13 +18,15 @@ using namespace std::chrono;
 
 int main(int argc, char *argv[]){
 	//cout<<argv[1]<<"\t"<<argv[2]<<endl;
-	ofstream fout;
+	ofstream fout2;
 	//this file stores reports of the time results
-	fout.open("times/times.txt");
+	fout2.open("times/times.txt");
+	ofstream fout;
+	fout.open("times/timesForEachExperiment.txt");
 	//takes any numbers of arguments
 	//the arguments are the names of the matrix.txt files
-	for(int j=0;j<2; j++){
-		fout<<"Run number "<<j<<endl;
+	for(int j=0;j<3; j++){
+		fout2<<"Run number "<<j<<endl;
 		auto start= high_resolution_clock::now();
 		for(int i=1;i<argc;i++){
 			string filename(argv[i]);
@@ -33,49 +35,48 @@ int main(int argc, char *argv[]){
 				m.load(argv[i], argv[i]);
 				m.SparseMulti();
 			}
-			else{
+			else if(j==1){
 				matrixs m;
 				m.loads(argv[i], argv[i]);
 				
-				
-				
 			}
-			
-			/*
-			fout<<"times for file "<<filename<<endl;
-			matrixs m;
-			cout<<"Run number "<<i<<endl;
-			cout<<"Multipling matrix "<<argv[i]<<endl;
-			m.load(argv[i], argv[i]);
-			//times the matrix multiplaction 
-			auto start= high_resolution_clock::now();
-			m.basicMulti();
-			auto stop= high_resolution_clock::now();
-			auto duration= duration_cast<microseconds>(stop-start);
-			fout<<"Normal runtime \t\t"<<duration.count()<<endl;
-			//records the time to the file
-			
-			auto start1= high_resolution_clock::now();
-			m.StrassenMulti();
-			auto stop1= high_resolution_clock::now();
-			auto duration1= duration_cast<microseconds>(stop1-start1);
-			fout<<"Strassen runtime \t"<<duration1.count()<<endl;
+			else{
 			
 			
-			//auto start2= high_resolution_clock::now();
-			m.SparseMulti();
-			//auto stop2= high_resolution_clock::now();
-			//auto duration2= duration_cast<microseconds>(stop2-start2);
-			fout<<"Sparse runtime \t\t"<<duration2.count()<<endl;
-			fout<<endl<<endl;
-			*/
+				fout<<"times for file "<<filename<<endl;
+				matrixs m;
+				cout<<"Run number "<<i<<endl;
+				cout<<"Multipling matrix "<<argv[i]<<endl;
+				m.load(argv[i], argv[i]);
+				//times the matrix multiplaction 
+				auto start3= high_resolution_clock::now();
+				m.basicMulti();
+				auto stop3= high_resolution_clock::now();
+				auto duration3= duration_cast<microseconds>(stop3-start3);
+				fout<<"Normal runtime \t\t"<<duration3.count()<<endl;
+				//records the time to the file
+				
+				auto start1= high_resolution_clock::now();
+				m.StrassenMulti();
+				auto stop1= high_resolution_clock::now();
+				auto duration1= duration_cast<microseconds>(stop1-start1);
+				fout<<"Strassen runtime \t"<<duration1.count()<<endl;
+				
+				
+				auto start2= high_resolution_clock::now();
+				m.SparseMulti();
+				auto stop2= high_resolution_clock::now();
+				auto duration2= duration_cast<microseconds>(stop2-start2);
+				fout<<"Sparse runtime \t\t"<<duration2.count()<<endl;
+				fout<<endl<<endl;
+			}
 		}
 		auto stop= high_resolution_clock::now();
 		auto duration= duration_cast<microseconds>(stop-start);
-		fout<<"runtime \t"<<duration.count()<<endl;
-		fout<<endl;
+		fout2<<"runtime \t"<<duration.count()<<endl;
+		fout2<<endl;
 	}
+	fout2.close();
 	fout.close();
-	
 	return 0;
 }
