@@ -20,7 +20,7 @@ void ikjalgorithm(vector< vector<int> > &A, vector< vector<int> > &B, vector< ve
         }
     }
 }
-
+//used by the strassen methoid
 void strassenR(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector<int> > &C, int tam) {
     if (tam <= size1) {
         ikjalgorithm(A, B, C, tam);
@@ -107,11 +107,11 @@ void strassenR(vector< vector<int> > &A, vector< vector<int> > &B, vector< vecto
     }
 	
 }
-
+//used by the strassen methoid
 unsigned int nextPowerOfTwo(int n) {
     return pow(2, int(ceil(log2(n))));
 }
-
+//used by the strassen methoid
 vector< vector<int> > strassen(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector<int> > &C, unsigned int n) {
     //unsigned int n = tam;
     unsigned int m = nextPowerOfTwo(n);
@@ -133,7 +133,7 @@ vector< vector<int> > strassen(vector< vector<int> > &A, vector< vector<int> > &
     }
 	return C;
 }
-
+//used by the strassen methoid
 void sum(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector<int> > &C, int tam) {
     int i, j;
 
@@ -143,7 +143,7 @@ void sum(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector<int>
         }
     }
 }
-
+//used by the strassen methoid
 void subtract(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector<int> > &C, int tam) {
     int i, j;
 
@@ -153,7 +153,7 @@ void subtract(vector< vector<int> > &A, vector< vector<int> > &B, vector< vector
         }
     }   
 }
-
+//loads the matrix from files
 void matrixs::load(string AName, string BName){
 	ifstream fin;
 	fin.open(AName);
@@ -187,6 +187,8 @@ void matrixs::load(string AName, string BName){
 	
 	
 }
+//prints of the matrixs stored
+//used for testing
 void matrixs::prt(){
 	/*cout<<"first\n";
 	for(int i=0;i<a.size();i++){
@@ -213,6 +215,8 @@ void matrixs::prt(){
 		}
 		cout<<endl;
 }
+
+//This is for basic matrix multiplication
 void matrixs::basicMulti(){
 	for(int i=0; i<a.size();i++){
 		vector<int> temp;
@@ -226,15 +230,17 @@ void matrixs::basicMulti(){
 		result.push_back(temp);
 	}
 }
+//the first call of the strassen methoid
 void matrixs::StrassenMulti(){
 	result=strassen(a, b, result, size);
 }
+//the sparse methoid
 void matrixs::SparseMulti(){
 	vector<int> RowPtr;
 	vector<int> ColIndex;
 	vector<int> Values;
 	int Row=0;
-	
+	//turns the matrix into a CSR
 	for(int i=0;i<a.size();i++){
 		RowPtr.push_back(Row);
 		int col=0;
@@ -249,12 +255,14 @@ void matrixs::SparseMulti(){
 		
 	}
 	RowPtr.push_back(Row);
-	
+	//cleans the result matrix
 	for(int i=0;i<result.size();i++){
 		for(int j=0;j<result[i].size();j++){
 			result[i][j]=0;
 		}
 	}
+	
+	//does the multiplication
 	for(int i=0; i<size;i++){
 
 		for(int k=RowPtr[i]; k<RowPtr[i+1];k++){
