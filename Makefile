@@ -1,7 +1,7 @@
 INPUT_PATH		:=	input.txt
 SORT_PATH		:= 	sort.txt
-BALANCE_FACTOR	:=	1
-N				:=	10000000
+BALANCE_FACTOR	:=	100
+N				:=	1000000
 
 default:
 	g++ -Ofast main.cpp avl.cpp -o avl.out 
